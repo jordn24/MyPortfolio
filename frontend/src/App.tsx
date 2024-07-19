@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import TileGrid from "./components/TileGrid";
+import HomeGrid from "./components/HomeGrid";
 import Footer from "./components/Footer";
 import {Grid} from "@mui/material"
 import './assets/css/main.css'
@@ -19,7 +19,7 @@ function App() {
       {/* Side Preview */}
     </Grid>
     <Grid item xs={8}>
-      <TileGrid />
+      <HomeGrid />
     </Grid>
     <Grid item xs={2}>
       {/* Side Preview */}
