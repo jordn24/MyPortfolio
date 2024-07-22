@@ -25,7 +25,7 @@ const ProjectsGrid: React.FC<ProjectsProps> = ({filter=""}) => {
     let sorted = queryParams.get('sorted');
 
     useEffect(() => {
-        fetch(`http://localhost:4500/projects/${filter}`)
+        fetch(`https://myportfolio-0jva.onrender.com/projects/${filter}`)
             .then((response) => {
                 return response.json();
             })

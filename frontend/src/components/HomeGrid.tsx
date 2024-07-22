@@ -26,7 +26,7 @@ const HomeGrid: React.FC = () => {
     let email = "jordan.sposito2430@gmail.com";
 
     useEffect(() => {
-        fetch("http://localhost:4500/projects")
+        fetch("https://myportfolio-0jva.onrender.com/projects")
             .then((response) => {
                 return response.json();
             })
