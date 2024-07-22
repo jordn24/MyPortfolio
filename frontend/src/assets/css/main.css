@@ -20,10 +20,15 @@ body {
       #828282,
       #717171
   );
+
+  background-size: cover;
+  background-repeat: no-repeat; /* Prevent the background from repeating */
+  background-attachment: fixed; /* Fix the background so it doesn't scroll with content */
+
 }
 
 html, body {
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
