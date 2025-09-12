@@ -14,32 +14,16 @@ interface Project {
 }
 
 interface ProjectsProps {
-    filter?: string;
+      projects: Project[];
+      filter?: string;
 }
 
-const ProjectsGrid: React.FC<ProjectsProps> = ({filter=""}) => {  
-    const [projects, setProjects] = useState<Project[]>([]);
+const ProjectsGrid: React.FC<ProjectsProps> = ({ projects, filter }) => {  
+    const filteredProjects = filter 
+    ? projects.filter((p) => p.category.toLowerCase() === filter.toLowerCase())
+    : projects;
 
-    let queryParams = new URLSearchParams(useLocation().search);
-
-    const cache: Record<string, Project[]> = {};
-
-    useEffect(() => {
-        if (cache[filter]) {
-            setProjects(cache[filter]);
-            return;
-        }
-
-        fetch(`https://myportfolio-0jva.onrender.com/projects/${filter}`)
-            .then(res => res.json())
-            .then((resData: Project[]) => {
-            cache[filter] = resData;
-            setProjects(resData);
-            })
-            .catch(err => console.error("Fetching data went wrong...", err));
-            
-        }, [filter])
-
+    
     return (
         <Grid container spacing={2}>
             {Array.from({length: 4}).map( (_, col: number) => (
@@ -47,7 +31,7 @@ const ProjectsGrid: React.FC<ProjectsProps> = ({filter=""}) => {
                     <Grid container direction='column'>
                         {Array.from({length: 3}).map( (_, row: number) => { 
                             const projectIndex: number = col * 3 + row;
-                            const project: Project = projects[projectIndex];
+                            const project: Project = filteredProjects[projectIndex];
                         
                             return (
                                 <Grid item marginTop={1}>

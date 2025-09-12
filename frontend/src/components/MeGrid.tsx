@@ -2,9 +2,6 @@ import { Grid, Box, Typography, useMediaQuery } from '@mui/material';
 import Tile from './Tile';
 import { motion } from "framer-motion";
 
-import linkedInBg from "../assets/images/linkedInBg-400.webp";
-import emailBg from "../assets/images/emailBg-400.webp";
-import githubBg from "../assets/images/githubBg-400.webp";
 import avatar from "../assets/images/avatar-400.webp";
 import gamerScoreIcon from "../assets/images/gamerScoreIcon-400.webp"
 import friendVariant from "../assets/images/friendVariant-400.webp";
@@ -37,13 +34,13 @@ const MeGrid = () => {
             <Grid item xs={3}>
                 <Grid container direction='column'>
                     <Grid item marginTop={1}>
-                        <Tile label='Github' image={githubBg} alt="github" url="https://github.com/jordn24" />
+                        <Tile label='Github' image="githubBg-400.webp" alt="github" url="https://github.com/jordn24" />
                     </Grid>
                     <Grid item marginTop={1}>
-                        <Tile label='LinkedIn' url='https://www.linkedin.com/in/jordan-sposito-9225082ba/' image={linkedInBg} alt="linked-in"/> 
+                        <Tile label='LinkedIn' url='https://www.linkedin.com/in/jordan-sposito-9225082ba/' image='linkedInBg-400.webp' alt="linked-in"/> 
                     </Grid>
                     <Grid item marginTop={1}>
-                        <Tile label='Email Me' image={emailBg} alt="contact-me" url={`mailto:${email}`} />
+                        <Tile label='Email Me' image='emailBg-400.webp' alt="contact-me" url={`mailto:${email}`} />
                     </Grid>
                 </Grid>
             </Grid>

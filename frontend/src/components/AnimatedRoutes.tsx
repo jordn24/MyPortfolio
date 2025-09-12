@@ -5,6 +5,7 @@ import HomeGrid from "./HomeGrid";
 import MeGrid from "./MeGrid";
 import ProjectsGrid from "./ProjectsGrid";
 import ErrorGrid from "./ErrorGrid";
+import { useEffect, useState } from "react";
 
 const variants = {
     enter: (direction: "forward" | "backward") => ({
@@ -18,10 +19,38 @@ const variants = {
     }),
 };
 
+interface Project {
+    id: string;
+    title: string;
+    thumbnail: string;
+    link: string;
+    date: string;
+    category: string;
+    backgroundColour: string;
+}
+
 const AnimatedRoutes: React.FC<{direction: "forward" | "backward"}> = ({direction}) => {
+
+    const [projects, setProjects] = useState<Project[]>([]);
+  
 
     const location = useLocation();
 
+    useEffect(() => {
+        fetch("https://myportfolio-0jva.onrender.com/projects")
+            .then((response) => {
+                return response.json();
+            })
+            .then((resData) => {
+                let sortedProjects = resData;
+                sortedProjects.sort((a: Project, b: Project) => new Date(b.date).getTime() - new Date(a.date).getTime());
+                setProjects(sortedProjects);
+            })
+            .catch((err: any) => {
+                console.log("Fetching data went wrong...", err);
+            })
+    }, [])
+    
     return(
         <AnimatePresence initial={true} mode="wait" custom={direction} >
             <motion.div
@@ -34,13 +63,13 @@ const AnimatedRoutes: React.FC<{direction: "forward" | "backward"}> = ({directio
             custom={direction}
             >
             <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<HomeGrid />} />
+                <Route path="/" element={<HomeGrid projects={projects} />} />
                 <Route path="/jordansposito" element={<MeGrid />} />
-                <Route path="/projects" element={<ProjectsGrid />} />
-                <Route path="/projects/javascript" element={<ProjectsGrid filter="javascript" />} />
-                <Route path="/projects/java" element={<ProjectsGrid filter="java" />} />
-                <Route path="/projects/python" element={<ProjectsGrid filter="python" />} />
-                <Route path="/projects/other" element={<ProjectsGrid filter="other" />} />
+                <Route path="/projects" element={<ProjectsGrid projects={projects} />} />
+                <Route path="/projects/javascript" element={<ProjectsGrid projects={projects} filter="javascript"/>} />
+                <Route path="/projects/java" element={<ProjectsGrid projects={projects} filter="java"/>} />
+                <Route path="/projects/python" element={<ProjectsGrid projects={projects} filter="python"/>} />
+                <Route path="/projects/other" element={<ProjectsGrid projects={projects} filter="other"/>} />
                 <Route path="*" element={<ErrorGrid />} />
             </Routes>
             </motion.div>

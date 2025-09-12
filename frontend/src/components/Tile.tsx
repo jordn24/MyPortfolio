@@ -1,6 +1,5 @@
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
 import { motion } from "framer-motion";
-import greenBg from "../assets/images/greenBg-400.webp";
 
 interface TileProps {
     label?: string;
@@ -15,7 +14,7 @@ interface TileProps {
 
 const Tile: React.FC<TileProps> = ({
     label = "",
-    image = greenBg,
+    image = 'greenBg-400.webp',
     alt,
     large = false,
     backgroundColor = 'rgb(33, 149, 38)',
@@ -60,7 +59,7 @@ const Tile: React.FC<TileProps> = ({
                     />
                     <CardContent sx={{ backgroundColor }}>
                         <Typography 
-                            color='white'
+                            color= {label !== "Empty Project" ? 'white' : 'transparent'}
                             sx={{
                                 fontSize: {
                                     sm: 8,

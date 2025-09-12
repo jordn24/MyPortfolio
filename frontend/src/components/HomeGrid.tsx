@@ -2,13 +2,6 @@ import { Grid } from '@mui/material';
 
 import Tile from './Tile';
 
-import portfolioBg from "../assets/images/portfolioBg-400.webp";
-import recentBg from "../assets/images/recentBg-400.webp";
-import profileBg from "../assets/images/profileBg-400.webp";
-
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 interface Project {
     id: string;
     title: string;
@@ -19,40 +12,24 @@ interface Project {
     backgroundColour: string;
 }
 
-
-const HomeGrid: React.FC = () => {  
-    const [projects, setProjects] = useState<Project[]>([]);
-
-    let email = "jordan.sposito2430@gmail.com";
-
-    useEffect(() => {
-        fetch("https://myportfolio-0jva.onrender.com/projects")
-            .then((response) => {
-                return response.json();
-            })
-            .then((resData) => {
-                let sortedProjects = resData;
-                sortedProjects.sort((a: Project, b: Project) => new Date(b.date).getTime() - new Date(a.date).getTime());
-                setProjects(sortedProjects);
-            })
-            .catch((err: any) => {
-                console.log("Fetching data went wrong...", err);
-            })
-    }, [])
+interface HomeGridProps {
+  projects: Project[];
+}
 
 
+const HomeGrid: React.FC<HomeGridProps> = ({ projects }) => {
     return (
             <Grid container spacing={2}>
                 <Grid item xs={3}>
                     <Grid container direction='column'>
                         <Grid item marginTop={1}>
-                            <Tile label='Projects' image={portfolioBg} alt="projects" url="/projects" openInNewTab={false} />
+                            <Tile label='Projects' image='portfolioBg-400.webp' alt="projects" url="/projects" openInNewTab={false} />
                         </Grid>
                         <Grid item marginTop={1}>
-                        <Tile label='My Account' image={profileBg} alt="account" url="/jordansposito" openInNewTab={false} />
+                        <Tile label='My Account' image='profileBg-400.webp' alt="account" url="/jordansposito" openInNewTab={false} />
                         </Grid>
                         <Grid item marginTop={1}>
-                            <Tile label='Recent' image={recentBg} alt="recent" url="/projects?sorted=dsc" openInNewTab={false} />
+                            <Tile label='Recent' image='recentBg-400.webp' alt="recent" url="/projects?sorted=dsc" openInNewTab={false} />
                         </Grid>
                     </Grid>
                 </Grid>
