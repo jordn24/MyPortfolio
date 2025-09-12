@@ -3,8 +3,8 @@ import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
-import searchIcon from "../assets/images/search.png";
-import tilePreview from "../assets/images/tile-thumbnail.png";
+import searchIcon from "../assets/images/search-400.webp";
+import tilePreview from "../assets/images/tile-thumbnail-400.webp";
 
 const SidePreview: React.FC<{ side: "left" | "right" }> = ({ side }) => {
   const location = useLocation();

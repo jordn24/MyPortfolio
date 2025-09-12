@@ -2,9 +2,9 @@ import { Grid } from '@mui/material';
 
 import Tile from './Tile';
 
-import portfolioBg from "../assets/images/portfolioBg.png";
-import recentBg from "../assets/images/recentBg.png";
-import profileBg from "../assets/images/profileBg.png";
+import portfolioBg from "../assets/images/portfolioBg-400.webp";
+import recentBg from "../assets/images/recentBg-400.webp";
+import profileBg from "../assets/images/profileBg-400.webp";
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

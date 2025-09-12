@@ -15,36 +15,30 @@ interface Project {
 
 interface ProjectsProps {
     filter?: string;
-    sorted?: string;
 }
 
 const ProjectsGrid: React.FC<ProjectsProps> = ({filter=""}) => {  
     const [projects, setProjects] = useState<Project[]>([]);
 
     let queryParams = new URLSearchParams(useLocation().search);
-    let sorted = queryParams.get('sorted');
+
+    const cache: Record<string, Project[]> = {};
 
     useEffect(() => {
-        fetch(`https://myportfolio-0jva.onrender.com/projects/${filter}`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((resData: Project[]) => {
-                let sortedProjects = resData;
-                
-                if (sorted === "asc") {
-                    sortedProjects.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-                }
-                if (sorted === "dsc") {
-                    sortedProjects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-                }
+        if (cache[filter]) {
+            setProjects(cache[filter]);
+            return;
+        }
 
-                setProjects(sortedProjects);
+        fetch(`https://myportfolio-0jva.onrender.com/projects/${filter}`)
+            .then(res => res.json())
+            .then((resData: Project[]) => {
+            cache[filter] = resData;
+            setProjects(resData);
             })
-            .catch((err: any) => {
-                console.log("Fetching data went wrong...", err);
-            })
-    }, [filter])
+            .catch(err => console.error("Fetching data went wrong...", err));
+            
+        }, [filter])
 
     return (
         <Grid container spacing={2}>

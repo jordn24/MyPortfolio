@@ -1,6 +1,6 @@
 import { Avatar, Typography, AppBar, Toolbar, Box } from '@mui/material';
 
-import profilePic from '../assets/images/profilePic.png';
+import profilePic from '../assets/images/profilePic-400.webp';
 
 
 export default function Header () {

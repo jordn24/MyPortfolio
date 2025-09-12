@@ -1,6 +1,6 @@
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
 import { motion } from "framer-motion";
-import greenBg from "../assets/images/greenBg.png";
+import greenBg from "../assets/images/greenBg-400.webp";
 
 interface TileProps {
     label?: string;
@@ -44,9 +44,10 @@ const Tile: React.FC<TileProps> = ({
                 <CardActionArea {...cardActionProps} onClick={onClick}>
                     <CardMedia
                         component="img"
-                        image={image}
+                        image={`/images/${image}`}
                         alt={alt}
                         height={imgHeight}
+                        loading="eager"
                         sx={{
                             width: '100%',
                             height: {

@@ -2,14 +2,14 @@ import { Grid, Box, Typography, useMediaQuery } from '@mui/material';
 import Tile from './Tile';
 import { motion } from "framer-motion";
 
-import linkedInBg from "../assets/images/linkedInBg.png";
-import emailBg from "../assets/images/emailBg.png";
-import githubBg from "../assets/images/githubBg.png";
-import avatar from "../assets/images/avatar.png";
-import gamerScoreIcon from "../assets/images/gamerScoreIcon.png"
-import friendVariant from "../assets/images/friendVariant.png";
-import friendVariant2 from "../assets/images/friendVariant2.png";
-import friendVariant3 from "../assets/images/friendVariant4.png";
+import linkedInBg from "../assets/images/linkedInBg-400.webp";
+import emailBg from "../assets/images/emailBg-400.webp";
+import githubBg from "../assets/images/githubBg-400.webp";
+import avatar from "../assets/images/avatar-400.webp";
+import gamerScoreIcon from "../assets/images/gamerScoreIcon-400.webp"
+import friendVariant from "../assets/images/friendVariant-400.webp";
+import friendVariant2 from "../assets/images/friendVariant2-400.webp";
+import friendVariant3 from "../assets/images/friendVariant4-400.webp";
 import theme from '../theme/customTheme';
 
 const MeGrid = () => {  

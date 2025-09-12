@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import NotFoundIcon from "../assets/images/404Icon.png";
+import NotFoundIcon from "../assets/images/404Icon-400.webp";
 
 const ErrorGrid: React.FC = () => {
     return (

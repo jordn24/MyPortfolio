@@ -1,5 +1,5 @@
-import leftClickIcon from "../assets/images/leftClickIcon.png";
-import touchIcon from "../assets/images/touchIcon.png";
+import leftClickIcon from "../assets/images/leftClickIcon-400.webp";
+import touchIcon from "../assets/images/touchIcon-400.webp";
 
 import {Box, Avatar, Typography, useMediaQuery, Theme} from "@mui/material";
 

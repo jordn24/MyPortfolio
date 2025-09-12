@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
-import loadingDash from "../assets/images/loadingDash.png";
+import loadingDash from "../assets/images/loadingDash-400.webp";
 
 const InitialLoad = () => {
     return(
